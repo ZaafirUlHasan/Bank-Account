@@ -25,7 +25,6 @@ public class CommandProcessorTest {
 
 		assertEquals(0.6, actualApr);
 		assertEquals("12345678", actualId);
-
 	}
 
 	@Test
@@ -146,5 +145,97 @@ public class CommandProcessorTest {
 
 		assertEquals(0, actualBalance);
 	}
+
+	@Test
+	public void transfer_normally() {
+		commandProcessor.process("create savings 12345678 2");
+		commandProcessor.process("create savings 87654321 2");
+		commandProcessor.process("deposit 12345678 1500");
+		commandProcessor.process("transfer 12345678 87654321 800");
+
+		Account account1 = bank.getAccountByID("12345678");
+		double actualBalance1 = account1.getBalance();
+
+		Account account2 = bank.getAccountByID("87654321");
+		double actualBalance2 = account2.getBalance();
+
+		assertEquals(700, actualBalance1);
+		assertEquals(800, actualBalance2);
+	}
+
+	@Test
+	public void two_transfers_normally() {
+		commandProcessor.process("create checking 12345678 2");
+		commandProcessor.process("create savings 87654321 2");
+		commandProcessor.process("deposit 12345678 1500");
+		commandProcessor.process("transfer 12345678 87654321 800");
+		commandProcessor.process("transfer 87654321 12345678 300");
+
+		Account account1 = bank.getAccountByID("12345678");
+		double actualBalance1 = account1.getBalance();
+
+		Account account2 = bank.getAccountByID("87654321");
+		double actualBalance2 = account2.getBalance();
+
+		assertEquals(1000, actualBalance1);
+		assertEquals(500, actualBalance2);
+	}
+
+
+	@Test
+	public void create_deposit_withdraw_and_transfer_from_checking() {
+		commandProcessor.process("create checking 12345678 0.6");
+		commandProcessor.process("create checking 87654321 0.6");
+		commandProcessor.process("deposit 12345678 750");
+		commandProcessor.process("withdraw 12345678 150");
+		commandProcessor.process("transfer 12345678 87654321 200");
+
+		Account account1 = bank.getAccountByID("12345678");
+		double actualBalance1 = account1.getBalance();
+
+		Account account2 = bank.getAccountByID("87654321");
+		double actualBalance2 = account2.getBalance();
+
+		assertEquals(400, actualBalance1);
+		assertEquals(200, actualBalance2);
+	}
+
+	@Test
+	public void pass_time_calculates_correct_balance_for_checking(){
+		commandProcessor.process("create checking 12345678 1");
+		commandProcessor.process("deposit 12345678 750");
+		commandProcessor.process("pass 6");
+
+		Account account = bank.getAccountByID("12345678");
+		double actualBalance = account.getBalance();
+
+		assertEquals(753.76, actualBalance , 0.1);
+	}
+
+	@Test
+	public void pass_time_calculates_correct_balance_for_savings(){
+		commandProcessor.process("create savings 12345678 2");
+		commandProcessor.process("deposit 12345678 750");
+		commandProcessor.process("pass 6");
+
+		Account account = bank.getAccountByID("12345678");
+		double actualBalance = account.getBalance();
+
+
+		assertEquals(757.53, actualBalance , 0.1);
+	}
+
+	@Test
+	public void pass_time_calculates_correct_balance_for_cd(){
+		commandProcessor.process("create cd 12345678 3 1500");
+		commandProcessor.process("pass 12");
+
+		Account account = bank.getAccountByID("12345678");
+		double actualBalance = account.getBalance();
+
+
+		assertEquals(1690.99, actualBalance , 0.1);
+	}
+
 
 }

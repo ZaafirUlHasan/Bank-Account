@@ -33,6 +33,6 @@ public class MasterControl {
 		List<String> finalOutput = output.output();
 
 		finalOutput.addAll(commandStorage.getInvalidCommands());
-		return commandStorage.getInvalidCommands();
+		return finalOutput;
 	}
 }

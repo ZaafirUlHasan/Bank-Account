@@ -15,11 +15,7 @@ public class Savings extends Account {
 		boolean withdrawnMoreThanBalance = withdrawAmount > balance;
 
 		if (withdrawnMoreThanBalance) {
-			if (balance > 1000) {
-				setBalance(balance - 1000);
-			} else {
-				setBalance(0);
-			}
+			setBalance(0);
 		} else {
 			setBalance(balance - withdrawAmount);
 		}
@@ -33,7 +29,7 @@ public class Savings extends Account {
 
 	@Override
 	public boolean isValidWithdrawal(double withdrawalAmount) {
-		return withdrawalAmount >= 0 && withdrawalAmount <= 1000;
+		return withdrawalAmount >= 0 && withdrawalAmount <= 1000 && !withdrawnThisMonth;
 	}
 
 	@Override

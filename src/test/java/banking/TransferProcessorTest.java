@@ -164,6 +164,21 @@ public class TransferProcessorTest {
 		assertEquals(1000, actual);
 	}
 
+
+	@Test
+	public void transfer_more_than_balance_moves_correct_amount() {
+		bank.addAccount("12345678", 3.0, true);
+		bank.addAccount("87654321", 3.0, false);
+		bank.deposit("12345678", 200);
+		transferProcessor.processTransfer(splitCommand("transfer 12345678 87654321 400"));
+
+		double actual1 = getAccountBalance("12345678");
+		double actual2 = getAccountBalance("87654321");
+
+		assertEquals(0, actual1);
+		assertEquals(200, actual2);
+	}
+
 	@Test
 	public void transfer_amount_is_a_decimal_has_correct_deposit() {
 		bank.addAccount("12345678", 3.0, false);

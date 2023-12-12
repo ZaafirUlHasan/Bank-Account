@@ -110,23 +110,45 @@ public class WithdrawProcessorTest {
 	@Test
 	public void more_than_balance_withdrawn_from_checking() {
 		bank.addAccount("12345678", 3.0, true);
-		bank.deposit("12345678", 2000);
-		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 50000"));
+		bank.deposit("12345678", 200);
+		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 300"));
 		Account account = bank.getAccountByID("12345678");
 		double actualBalance = account.getBalance();
 
-		assertEquals(1600, actualBalance);
+		assertEquals(0, actualBalance);
+	}
+
+	@Test
+	public void more_than_balance_withdrawn_from_checking_2() {
+		bank.addAccount("12345678", 3.0, true);
+		bank.deposit("12345678", 500);
+		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 600"));
+		Account account = bank.getAccountByID("12345678");
+		double actualBalance = account.getBalance();
+
+		assertEquals(0, actualBalance);
 	}
 
 	@Test
 	public void more_than_balance_withdrawn_from_savings() {
 		bank.addAccount("12345678", 3.0, false);
-		bank.deposit("12345678", 2000);
-		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 50000"));
+		bank.deposit("12345678", 800);
+		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 900"));
 		Account account = bank.getAccountByID("12345678");
 		double actualBalance = account.getBalance();
 
-		assertEquals(1000, actualBalance);
+		assertEquals(0, actualBalance);
+	}
+
+	@Test
+	public void more_than_balance_withdrawn_from_savings_2() {
+		bank.addAccount("12345678", 3.0, false);
+		bank.deposit("12345678", 1200);
+		withdrawProcessor.processWithdrawal(splitCommand("withdraw 12345678 1300"));
+		Account account = bank.getAccountByID("12345678");
+		double actualBalance = account.getBalance();
+
+		assertEquals(0, actualBalance);
 	}
 
 	@Test

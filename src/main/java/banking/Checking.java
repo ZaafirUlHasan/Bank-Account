@@ -11,11 +11,7 @@ public class Checking extends Account {
 		double balance = getBalance();
 		boolean withdrawnMoreThanBalance = withdrawAmount > balance;
 		if (withdrawnMoreThanBalance) {
-			if (balance > 400) {
-				setBalance(balance - 400);
-			} else {
-				setBalance(0);
-			}
+			setBalance(0);
 		} else {
 			setBalance(balance - withdrawAmount);
 		}

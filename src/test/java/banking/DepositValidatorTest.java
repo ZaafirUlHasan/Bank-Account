@@ -328,4 +328,11 @@ public class DepositValidatorTest {
 		assertFalse(actual);
 	}
 
+	@Test
+	public void cannot_deposit_into_account_that_does_not_exist() {
+		bank.addAccount("12345678", 4.0, true);
+		boolean actual = depositValidator.validateDeposit(splitCommand("deposit 01234567 350"));
+
+		assertFalse(actual);
+	}
 }

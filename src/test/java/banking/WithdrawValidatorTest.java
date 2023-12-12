@@ -286,4 +286,31 @@ public class WithdrawValidatorTest {
 		assertTrue(actual);
 	}
 
+	@Test
+	public void cannot_withdraw_from_account_that_does_not_exist() {
+		bank.addAccount("12345678", 4.0, true);
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 01234567 350"));
+
+		assertFalse(actual);
+	}
+
+	@Test
+	public void cd_cannot_be_withdrawn_from_before_12_months() {
+		bank.addAccount("12345678", 4.0, 1500);
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 1500"));
+
+		assertFalse(actual);
+	}
+
+	@Test
+	public void less_than_full_amount_cannot_be_withdrawn_from_cd() {
+		bank.addAccount("12345678", 4.0, 1500);
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 1300"));
+
+		assertFalse(actual);
+	}
+
+
+
+
 }

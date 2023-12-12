@@ -50,22 +50,14 @@ public class Bank {
 
 	public boolean isValidDeposit(String id, double depositAmount) {
 		Account account;
+		account = accounts.get(id);
 
-		if (accountExistsById(id)) {
-			account = accounts.get(id);
-		} else {
-			return false;
-		}
 		return account.isValidDeposit(depositAmount);
 	}
 
 	public boolean isValidWithdrawal(String id, double withdrawalAmount) {
 		Account account;
-		if (accountExistsById(id)) {
-			account = accounts.get(id);
-		} else {
-			return false;
-		}
+		account = accounts.get(id);
 		return account.isValidWithdrawal(withdrawalAmount);
 	}
 

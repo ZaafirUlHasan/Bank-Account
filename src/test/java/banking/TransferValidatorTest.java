@@ -109,6 +109,39 @@ public class TransferValidatorTest {
 		assertFalse(actual);
 	}
 
+
+	@Test
+	public void cannot_transfer_to_non_existant_account() {
+		bank.addAccount("12345678", 3.0, false);
+		bank.addAccount("87654321", 3.0, true);
+		boolean actual = transferValidator.validateTransfer(splitCommand("transfer 12345678 02345678 300"));
+		assertFalse(actual);
+	}
+
+	@Test
+	public void cannot_transfer_from_non_existant_account() {
+		bank.addAccount("12345678", 3.0, false);
+		bank.addAccount("87654321", 3.0, true);
+		boolean actual = transferValidator.validateTransfer(splitCommand("transfer 02345678 12345678 300"));
+		assertFalse(actual);
+	}
+
+	@Test
+	public void cannot_transfer_from_cd_account() {
+		bank.addAccount("12345678", 3.0, 1500);
+		bank.addAccount("87654321", 3.0, true);
+		boolean actual = transferValidator.validateTransfer(splitCommand("transfer 12345678 87654321 300"));
+		assertFalse(actual);
+	}
+
+	@Test
+	public void cannot_transfer_to_cd_account() {
+		bank.addAccount("12345678", 3.0, 1500);
+		bank.addAccount("87654321", 3.0, true);
+		boolean actual = transferValidator.validateTransfer(splitCommand("transfer 87654321 12345678 300"));
+		assertFalse(actual);
+	}
+
 	@Test
 	public void transferring_huge_amount_is_invalid() {
 		bank.addAccount("12345678", 3.0, false);

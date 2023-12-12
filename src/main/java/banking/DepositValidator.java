@@ -7,7 +7,7 @@ public class DepositValidator extends CommandValidator {
 	}
 
 	public boolean validateDeposit(String[] parts) {
-		boolean validDeposit;
+		boolean validDeposit = false;
 
 		if (parts.length != 3) {
 			return false;
@@ -16,14 +16,18 @@ public class DepositValidator extends CommandValidator {
 		String id = parts[1];
 		String depositAmount = parts[2];
 
-		boolean validId = (super.checkId(parts[1])) && (accountExistsInBank(parts[1]));
-		try {
-			validDeposit = bank.isValidDeposit(id, Double.parseDouble(depositAmount));
-		} catch (NumberFormatException e) {
-			validDeposit = false;
+		boolean validId = (super.checkId(id) && accountExistsInBank(id));
+		if (validId) {
+			try {
+				validDeposit = bank.isValidDeposit(id, Double.parseDouble(depositAmount));
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		}else {
+			return false;
 		}
 
-		return validDeposit && validId;
+		return validDeposit;
 
 	}
 
