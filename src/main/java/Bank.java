@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
-	private Map<String, Account> accounts;
+	private final Map<String, Account> accounts;
 
 	public Bank() {
 		accounts = new HashMap<>();
@@ -75,5 +75,9 @@ public class Bank {
 	public double maxWithdrawal(String id) {
 		Account account = getAccountByID(id);
 		return account.getBalance();
+	}
+
+	public void removeAccount(String accountId) {
+		accounts.remove(accountId);
 	}
 }

@@ -58,7 +58,8 @@ public class BankTest {
 	@Test
 	public void withdrawing_subtracts_money_from_correct_account() {
 		bank.addAccount("00000001", 2.5, true);
-		bank.addAccount("00000002", 2.5, 55.6);
+		bank.addAccount("00000002", 2.5, false);
+		bank.deposit("00000002", 55.6);
 		bank.withdraw("00000002", 10.6);
 
 		assertEquals(45, bank.getAccountByID("00000002").getBalance());

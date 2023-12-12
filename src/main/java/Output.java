@@ -31,7 +31,7 @@ public class Output {
 	}
 
 	private ArrayList<String> getTransactionalCommandsForAccount(String accountId, List<String> validCommands) {
-		ArrayList<String> transactionHistory = new ArrayList<String>();
+		ArrayList<String> transactionHistory = new ArrayList<>();
 		for (String command : validCommands) {
 			String[] parts = command.split(" ");
 			if (parts[0].equalsIgnoreCase("transfer")) {
@@ -54,7 +54,7 @@ public class Output {
 
 		for (String command : validCommands) {
 			String[] parts = command.split(" ");
-			if (parts[0].toLowerCase().equals("create")) {
+			if (parts[0].equalsIgnoreCase("create")) {
 				if (bank.accountExistsById(parts[2])) {
 					Account account = accounts.get(parts[2]);
 					String formattedAccountState = String.format("%s %s %.2f %.2f", account.getAccountType(),
@@ -62,9 +62,7 @@ public class Output {
 
 					formattedAccountState = capitalizeAccountState(formattedAccountState);
 					accountStates.add(formattedAccountState);
-
 				}
-
 			}
 		}
 

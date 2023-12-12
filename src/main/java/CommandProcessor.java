@@ -3,6 +3,7 @@ public class CommandProcessor {
 	public Bank bank;
 
 	public CommandProcessor(Bank bank) {
+
 		this.bank = bank;
 	}
 
@@ -12,21 +13,37 @@ public class CommandProcessor {
 
 		String commandType = parts[0];
 
-		if (commandType.equals("create")) {
+		switch (commandType) {
+		case "create":
 			CreateProcessor createProcessor;
 			createProcessor = new CreateProcessor(bank);
 
 			createProcessor.processCreate(parts);
-		} else if (commandType.equals("deposit")) {
+			break;
+		case "deposit":
 			DepositProcessor depositProcessor;
 			depositProcessor = new DepositProcessor(bank);
 
 			depositProcessor.processDeposit(parts);
-		} else if (commandType.equals("withdraw")) {
+			break;
+		case "withdraw":
 			WithdrawProcessor withdrawProcessor;
 			withdrawProcessor = new WithdrawProcessor(bank);
 
 			withdrawProcessor.processWithdrawal(parts);
+			break;
+		case "transfer":
+			TransferProcessor transferProcessor;
+			transferProcessor = new TransferProcessor(bank);
+
+			transferProcessor.processTransfer(parts);
+			break;
+		case "pass":
+			PassTimeProcessor passTimeProcessor;
+			passTimeProcessor = new PassTimeProcessor(bank);
+
+			passTimeProcessor.processPassTime(parts);
+			break;
 		}
 
 	}

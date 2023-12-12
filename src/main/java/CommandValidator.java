@@ -11,25 +11,37 @@ public class CommandValidator {
 		command = command.toLowerCase();
 		String[] parts = command.split(" ");
 
-		if (parts[0].equals("create")) {
+		String commandType = parts[0];
+
+		switch (commandType) {
+		case "create":
 			CreateValidator createValidator;
 			createValidator = new CreateValidator(bank);
 
 			return createValidator.validateCreate(parts);
-		} else if (parts[0].equals("deposit")) {
+		case "deposit":
 			DepositValidator depositValidator;
 			depositValidator = new DepositValidator(bank);
 
 			return depositValidator.validateDeposit(parts);
-		} else if (parts[0].equals("transfer")) {
+		case "withdraw":
+			WithdrawValidator withdrawValidator;
+			withdrawValidator = new WithdrawValidator(bank);
+
+			return withdrawValidator.validateWithdraw(parts);
+		case "transfer":
 			TransferValidator transferValidator;
 			transferValidator = new TransferValidator(bank);
 
 			return transferValidator.validateTransfer(parts);
-		} else {
+		case "pass":
+			PassTimeValidator passTimeValidator;
+			passTimeValidator = new PassTimeValidator(bank);
+
+			return passTimeValidator.validatePassTime(parts);
+		default:
 			return false;
 		}
-
 	}
 
 	public boolean accountExistsInBank(String id) {

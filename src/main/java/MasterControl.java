@@ -2,12 +2,14 @@ import java.util.List;
 
 public class MasterControl {
 
-	private CommandValidator commandValidator;
-	private CommandProcessor commandProcessor;
-	private CommandStorage commandStorage;
+	private final Bank bank;
+	private final CommandValidator commandValidator;
+	private final CommandProcessor commandProcessor;
+	private final CommandStorage commandStorage;
 
-	public MasterControl(CommandValidator commandValidator, CommandProcessor commandProcessor,
+	public MasterControl(Bank bank, CommandValidator commandValidator, CommandProcessor commandProcessor,
 			CommandStorage commandStorage) {
+		this.bank = bank;
 		this.commandValidator = commandValidator;
 		this.commandProcessor = commandProcessor;
 		this.commandStorage = commandStorage;
@@ -18,10 +20,17 @@ public class MasterControl {
 		for (String command : input) {
 			if (commandValidator.validate(command)) {
 				commandProcessor.process(command);
+
+				commandStorage.addValidCommand(command);
 			} else {
 				commandStorage.addInvalidCommand(command);
 			}
 		}
+
+		Output output = new Output(bank, commandStorage);
+		List<String> finalOutput = output.output();
+
+		finalOutput.addAll(commandStorage.getInvalidCommands());
 		return commandStorage.getInvalidCommands();
 	}
 }

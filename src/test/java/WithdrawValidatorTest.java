@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 
 public class WithdrawValidatorTest {
 	WithdrawValidator withdrawValidator;
+	PassTimeProcessor passTimeProcessor;
 	Bank bank;
 
 	@BeforeEach
 	void setUp() {
 		bank = new Bank();
 		withdrawValidator = new WithdrawValidator(bank);
-
+		passTimeProcessor = new PassTimeProcessor(bank);
 	}
 
 	private String[] splitCommand(String command) {
@@ -39,7 +40,8 @@ public class WithdrawValidatorTest {
 	@Test
 	public void withdraw_from_cd_normally() {
 		bank.addAccount("12345678", 4.0, 1500);
-		boolean actual = withdrawValidator.validateWithdraw(splitCommand("deposit 12345678 1500"));
+		passTimeProcessor.processPassTime(splitCommand("pass 12"));
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("deposit 12345678 1759.8"));
 
 		assertTrue(actual);
 	}
@@ -90,7 +92,8 @@ public class WithdrawValidatorTest {
 	@Test
 	public void minimum_withdrawal_from_cd() {
 		bank.addAccount("12345678", 4.0, 1000);
-		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 1000"));
+		passTimeProcessor.processPassTime(splitCommand("pass 12"));
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 1173.2"));
 
 		assertTrue(actual);
 	}
@@ -114,7 +117,8 @@ public class WithdrawValidatorTest {
 	@Test
 	public void maximum_withdrawal_from_cd() {
 		bank.addAccount("12345678", 4.0, 10000);
-		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 10000"));
+		passTimeProcessor.processPassTime(splitCommand("pass 12"));
+		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 11731.99"));
 
 		assertTrue(actual);
 	}
@@ -138,6 +142,7 @@ public class WithdrawValidatorTest {
 	@Test
 	public void cd_huge_withdrawal() {
 		bank.addAccount("12345678", 4.0, 1500);
+		passTimeProcessor.processPassTime(splitCommand("pass 12"));
 		boolean actual = withdrawValidator.validateWithdraw(splitCommand("withdraw 12345678 2147483647"));
 
 		assertTrue(actual);
