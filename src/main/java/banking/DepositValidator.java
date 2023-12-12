@@ -18,17 +18,21 @@ public class DepositValidator extends CommandValidator {
 
 		boolean validId = (super.checkId(id) && accountExistsInBank(id));
 		if (validId) {
-			try {
-				validDeposit = bank.isValidDeposit(id, Double.parseDouble(depositAmount));
-			} catch (NumberFormatException e) {
-				return false;
-			}
+			validDeposit = checkDepositAmount(id , depositAmount);
 		}else {
 			return false;
 		}
 
 		return validDeposit;
 
+	}
+
+	private boolean checkDepositAmount(String id, String depositAmount) {
+		try {
+			return bank.isValidDeposit(id, Double.parseDouble(depositAmount));
+		} catch (NumberFormatException ignored) {
+			return false;
+		}
 	}
 
 }

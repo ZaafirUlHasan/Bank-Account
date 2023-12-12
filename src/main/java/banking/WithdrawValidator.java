@@ -7,21 +7,24 @@ public class WithdrawValidator extends TransferValidator {
 
 	public boolean validateWithdraw(String[] parts) {
 		boolean validWithdrawal = false;
+		boolean validLength = parts.length == 3;
+		String id;
+		String withdrawAmount;
 
-		if (parts.length != 3) {
+		if (validLength) {
+			id = parts[1];
+			withdrawAmount = parts[2];
+		}else {
 			return false;
 		}
 
-		String id = parts[1];
-		String withdrawAmount = parts[2];
 		boolean validId = (super.checkId(parts[1])) && (accountExistsInBank(parts[1]));
 		if (validId) {
 			try {
 				validWithdrawal = checkWithdrawal(id, Double.parseDouble(withdrawAmount));
 			} catch (NumberFormatException ignored) {
+				// Left empty on purpose
 			}
-		}else{
-			return false;
 		}
 
 		return validWithdrawal;

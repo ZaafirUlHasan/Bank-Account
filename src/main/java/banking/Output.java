@@ -40,10 +40,8 @@ public class Output {
 				if (parts[1].equals(accountId) || parts[2].equals(accountId)) {
 					transactionHistory.add(command);
 				}
-			} else if (parts[0].equalsIgnoreCase("deposit") || parts[0].equalsIgnoreCase("withdraw")) {
-				if (parts[1].equals(accountId)) {
-					transactionHistory.add(command);
-				}
+			} else if ((parts[0].equalsIgnoreCase("deposit") || parts[0].equalsIgnoreCase("withdraw")) && (parts[1].equals(accountId))) {
+				transactionHistory.add(command);
 			}
 		}
 
@@ -56,15 +54,13 @@ public class Output {
 
 		for (String command : validCommands) {
 			String[] parts = command.split(" ");
-			if (parts[0].equalsIgnoreCase("create")) {
-				if (bank.accountExistsById(parts[2])) {
-					Account account = accounts.get(parts[2]);
-					String formattedAccountState = String.format("%s %s %.2f %.2f", account.getAccountType(),
-							account.getId(), account.getBalance(), account.getApr());
+			if (parts[0].equalsIgnoreCase("create") && bank.accountExistsById(parts[2])) {
+				Account account = accounts.get(parts[2]);
+				String formattedAccountState = String.format("%s %s %.2f %.2f", account.getAccountType(),
+						account.getId(), account.getBalance(), account.getApr());
 
-					formattedAccountState = capitalizeAccountState(formattedAccountState);
-					accountStates.add(formattedAccountState);
-				}
+				formattedAccountState = capitalizeAccountState(formattedAccountState);
+				accountStates.add(formattedAccountState);
 			}
 		}
 

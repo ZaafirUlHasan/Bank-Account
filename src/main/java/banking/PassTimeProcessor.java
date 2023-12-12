@@ -39,10 +39,13 @@ public class PassTimeProcessor extends CommandProcessor {
 			}
 
 			// Remove accounts outside the iteration
-			for (String accountId : accountsToRemove) {
-				bank.removeAccount(accountId);
-				accounts.remove(accountId);
-			}
+			removeAccount(accountsToRemove);
+		}
+	}
+
+	private void removeAccount(List<String> accountsToRemove) {
+		for (String accountId : accountsToRemove) {
+			bank.removeAccount(accountId);
 		}
 	}
 

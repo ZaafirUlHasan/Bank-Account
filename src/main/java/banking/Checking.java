@@ -29,5 +29,6 @@ public class Checking extends Account {
 
 	@Override
 	public void passMonth() {
+		// Do nothing as checking is not affected by passing of month
 	}
 }

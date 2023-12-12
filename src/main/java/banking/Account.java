@@ -7,7 +7,7 @@ public abstract class Account {
 	private final String accountType;
 	private double balance;
 
-	public Account(String id, double apr, String accountType) {
+	protected Account(String id, double apr, String accountType) {
 		this.id = id;
 		this.apr = apr;
 		this.balance = 0;
