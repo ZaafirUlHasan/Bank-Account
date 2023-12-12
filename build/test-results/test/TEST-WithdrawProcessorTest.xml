@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WithdrawProcessorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.003">
+  <properties/>
+  <testcase name="more_than_balance_withdrawn_from_checking()" classname="WithdrawProcessorTest" time="0.001"/>
+  <testcase name="zero_withdrawn_from_checking()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="decimal_amount_withdrawn_from_cd()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_savings()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="zero_withdrawn_from_savings()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="multiple_accounts_withdrawn_from()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="more_than_balance_withdrawn_from_cd()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="more_than_balance_withdrawn_from_savings()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="decimal_amount_withdrawn_from_checking()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_cd()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="decimal_amount_withdrawn_from_savings()" classname="WithdrawProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_checking()" classname="WithdrawProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PassTimeProcessorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.002">
+  <properties/>
+  <testcase name="pass_time_deducts_minimum_balance_fee()" classname="PassTimeProcessorTest" time="0.001"/>
+  <testcase name="multiple_apr_calculations()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="max_months_passed()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="cd_correct_apr_calculation_after_pass_time()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="savings_correct_apr_calculation_after_pass_time()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="multiple_months_passed_on_multiple_accounts()" classname="PassTimeProcessorTest" time="0.001"/>
+  <testcase name="multiple_months_passed()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="checking_correct_apr_calculation_after_pass_time()" classname="PassTimeProcessorTest" time="0.0"/>
+  <testcase name="pass_time_deletes_zero_balance_accounts()" classname="PassTimeProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

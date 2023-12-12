@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TransferProcessorTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.002">
+  <properties/>
+  <testcase name="savings_max_transfer_to()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="zero_dollars_transferred_does_not_decrease_balance()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="only_actually_withdrawn_amount_is_deposited()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="balance_is_zero_after_transferring_more_than_balance()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="transfer_increases_money_in_account()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="from_multiple_accounts_correct_account_deposited_into_and_withdrawn_from()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="transfer_decreases_money_from_account()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="transfer_amount_is_a_decimal_has_correct_withdrawal()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="zero_dollars_transferred_does_not_increase_balance()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="checking_max_transfer_to()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="transfer_amount_is_a_decimal_has_correct_deposit()" classname="TransferProcessorTest" time="0.0"/>
+  <testcase name="checking_max_transfer_from()" classname="TransferProcessorTest" time="0.001"/>
+  <testcase name="savings_max_transfer_from()" classname="TransferProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

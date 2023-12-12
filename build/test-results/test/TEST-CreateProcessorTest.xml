@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CreateProcessorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.002">
+  <properties/>
+  <testcase name="cd_created_initial_deposit_is_a_decimal()" classname="CreateProcessorTest" time="0.0"/>
+  <testcase name="cd_created_with_minimum_initial_deposit()" classname="CreateProcessorTest" time="0.001"/>
+  <testcase name="account_created_with_0_apr()" classname="CreateProcessorTest" time="0.0"/>
+  <testcase name="cd_created_with_maximum_initial_deposit()" classname="CreateProcessorTest" time="0.0"/>
+  <testcase name="account_created_with_max_apr()" classname="CreateProcessorTest" time="0.0"/>
+  <testcase name="account_created_with_all_0_id()" classname="CreateProcessorTest" time="0.0"/>
+  <testcase name="account_created_with_all_9_id()" classname="CreateProcessorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

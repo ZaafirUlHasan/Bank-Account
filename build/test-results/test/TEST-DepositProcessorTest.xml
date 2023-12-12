@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DepositProcessorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.001">
+  <properties/>
+  <testcase name="zero_deposited_into_savings()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="deposit_into_checking()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="maximum_deposited_into_checking()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="deposit_into_savings()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="decimal_amount_deposited_into_checking()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="decimal_amount_deposited_into_savings()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="maximum_deposited_into_savings()" classname="DepositProcessorTest" time="0.0"/>
+  <testcase name="zero_deposited_into_checking()" classname="DepositProcessorTest" time="0.001"/>
+  <testcase name="multiple_accounts_created_and_deposited_into()" classname="DepositProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

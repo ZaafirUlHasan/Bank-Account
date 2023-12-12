@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AccountTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.001">
+  <properties/>
+  <testcase name="withdrawing_does_not_decrease_balance_below_0()" classname="AccountTest" time="0.0"/>
+  <testcase name="withdrawing_twice_works_as_expected()" classname="AccountTest" time="0.0"/>
+  <testcase name="savings_account_created_with_0_starting_balance()" classname="AccountTest" time="0.0"/>
+  <testcase name="withdrawing_decreases_balance()" classname="AccountTest" time="0.0"/>
+  <testcase name="depositing_twice_works_as_expected()" classname="AccountTest" time="0.001"/>
+  <testcase name="account_created_with_specified_apr()" classname="AccountTest" time="0.0"/>
+  <testcase name="depositing_increases_balance()" classname="AccountTest" time="0.0"/>
+  <testcase name="account_created_with_0_starting_balance()" classname="AccountTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

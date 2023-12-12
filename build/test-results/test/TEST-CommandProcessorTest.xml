@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CommandProcessorTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.014">
+  <properties/>
+  <testcase name="create_deposit_and_withdraw_from_checking()" classname="CommandProcessorTest" time="0.007"/>
+  <testcase name="create_and_withdraw_from_cd()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="create_and_deposit_into_savings()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="cd_created_normally()" classname="CommandProcessorTest" time="0.001"/>
+  <testcase name="create_deposit_withdraw_transfer_and_pass_time()" classname="CommandProcessorTest" time="0.001"/>
+  <testcase name="create_deposit_withdraw_and_transfer()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="checking_created_normally()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="two_accounts_created_normally_have_correct_apr()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="two_accounts_created_normally_have_correct_ids()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="two_accounts_created_normally()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="saving_created_normally()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="create_deposit_and_transfer()" classname="CommandProcessorTest" time="0.001"/>
+  <testcase name="create_and_deposit_into_checking()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="create_deposit_and_transfer_deducts_money()" classname="CommandProcessorTest" time="0.0"/>
+  <testcase name="create_deposit_and_withdraw_from_savings()" classname="CommandProcessorTest" time="0.001"/>
+  <testcase name="multiple_accounts_created_and_deposited_into()" classname="CommandProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

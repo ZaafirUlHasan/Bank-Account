@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CommandStorageTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.003">
+  <properties/>
+  <testcase name="invalid_command_with_numbers_only()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="two_invalid_commands_stored_normally()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="multiple_valid_commands_stored_normally()" classname="CommandStorageTest" time="0.001"/>
+  <testcase name="invalid_command_with_special_characters()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="multiple_invalid_commands_stored_normally()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="invalid_command_stored_normally()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="testEmptyInvalidCommandsList()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="two_valid_commands_stored_normally()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="valid_command_stored_normally()" classname="CommandStorageTest" time="0.0"/>
+  <testcase name="testNullCommand()" classname="CommandStorageTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

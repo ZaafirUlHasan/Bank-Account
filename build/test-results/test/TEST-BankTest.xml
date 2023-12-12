@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BankTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-12-12T00:19:21" hostname="n3-119-253.dhcp.drexel.edu" time="0.001">
+  <properties/>
+  <testcase name="withdrawing_subtracts_money_from_correct_account()" classname="BankTest" time="0.0"/>
+  <testcase name="when_two_accounts_are_added_to_bank_it_has_2_accounts()" classname="BankTest" time="0.0"/>
+  <testcase name="withdrawing_twice_works_as_expected()" classname="BankTest" time="0.0"/>
+  <testcase name="correct_account_is_retrieved()" classname="BankTest" time="0.0"/>
+  <testcase name="depositing_twice_works_as_expected()" classname="BankTest" time="0.0"/>
+  <testcase name="when_account_is_added_to_bank_it_has_1_account()" classname="BankTest" time="0.0"/>
+  <testcase name="depositing_sends_money_to_correct_account()" classname="BankTest" time="0.0"/>
+  <testcase name="bank_has_no_accounts_upon_creation()" classname="BankTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
