@@ -10,12 +10,9 @@ public class CommandProcessor {
 	}
 
 	public void process(String command) {
-		command = command.toLowerCase();
-		String[] parts = command.split(" ");
+		String[] parts = getParts(command);
 
-		String commandType = parts[0];
-
-		switch (commandType) {
+		switch (parts[0]) {
 			case "create":
 				CreateProcessor createProcessor = new CreateProcessor(bank);
 				createProcessor.processCreate(parts);
@@ -39,5 +36,10 @@ public class CommandProcessor {
 			default:
 				break;
 		}
+	}
+
+	private String[] getParts(String command) {
+		command = command.toLowerCase();
+		return command.split(" ");
 	}
 }

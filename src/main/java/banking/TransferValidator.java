@@ -15,7 +15,7 @@ public class TransferValidator extends CommandValidator {
 		String toID = parts[2];
 		String transferAmount = parts[3];
 
-		validIds = checkTransferID(toID , fromID) && accountExistsInBank(fromID) && accountExistsInBank(toID);
+		validIds = checkTransferID(fromID , toID) && accountExistsInBank(fromID) && accountExistsInBank(toID);
 
 
 		boolean validAmount = false;

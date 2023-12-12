@@ -9,41 +9,45 @@ public class CommandValidator {
 	}
 
 	public boolean validate(String command) {
+		String[] parts = getParts(command);
+		boolean valid = false;
 
-		command = command.toLowerCase();
-		String[] parts = command.split(" ");
-
-		String commandType = parts[0];
-
-		switch (commandType) {
+		switch (parts[0]) {
 		case "create":
 			CreateValidator createValidator;
 			createValidator = new CreateValidator(bank);
 
-			return createValidator.validateCreate(parts);
+			valid = createValidator.validateCreate(parts);
+			break;
 		case "deposit":
 			DepositValidator depositValidator;
 			depositValidator = new DepositValidator(bank);
 
-			return depositValidator.validateDeposit(parts);
+			valid = depositValidator.validateDeposit(parts);
+			break;
 		case "withdraw":
 			WithdrawValidator withdrawValidator;
 			withdrawValidator = new WithdrawValidator(bank);
 
-			return withdrawValidator.validateWithdraw(parts);
+			valid = withdrawValidator.validateWithdraw(parts);
+			break;
 		case "transfer":
 			TransferValidator transferValidator;
 			transferValidator = new TransferValidator(bank);
 
-			return transferValidator.validateTransfer(parts);
+			valid = transferValidator.validateTransfer(parts);
+			break;
 		case "pass":
 			PassTimeValidator passTimeValidator;
 			passTimeValidator = new PassTimeValidator(bank);
 
-			return passTimeValidator.validatePassTime(parts);
+			valid = passTimeValidator.validatePassTime(parts);
+			break;
 		default:
-			return false;
+			// left empty on purpose
 		}
+
+		return valid;
 	}
 
 	public boolean accountExistsInBank(String id) {
@@ -55,6 +59,11 @@ public class CommandValidator {
 		boolean digitsOnly = id.matches("\\d{8}");
 
 		return (validLength && digitsOnly);
+	}
+
+	private String[] getParts(String command) {
+		command = command.toLowerCase();
+		return command.split(" ");
 	}
 
 }
