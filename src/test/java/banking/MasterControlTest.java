@@ -231,5 +231,139 @@ public class MasterControlTest {
 		assertEquals(0, actual.size());
 	}
 
+	@Test
+	void sample_make_sure_this_passes_unchanged() {
+		input.add("Create savings 12345678 0.6");
+		input.add("Deposit 12345678 700");
+		input.add("Deposit 12345678 5000");
+		input.add("creAte cHecKing 98765432 0.01");
+		input.add("Deposit 98765432 300");
+		input.add("Transfer 98765432 12345678 300");
+		input.add("Pass 1");
+		input.add("Create cd 23456789 1.2 2000");
+		List<String> actual = masterControl.start(input);
+
+		assertEquals(5, actual.size());
+		assertEquals("Savings 12345678 1000.50 0.60", actual.get(0));
+		assertEquals("Deposit 12345678 700", actual.get(1));
+		assertEquals("Transfer 98765432 12345678 300", actual.get(2));
+		assertEquals("Cd 23456789 2000.00 1.20", actual.get(3));
+		assertEquals("Deposit 12345678 5000", actual.get(4));
+	}
+
+	@Test
+	void mixed_all_commands_tested() {
+
+		// valid creates:
+		input.add("create savings 12345678 2");
+		input.add("create checking 11111111 1");
+		input.add("create cd 23456789 3 5000");
+		input.add("create cd 34567890 3 5000");
+
+		// invalid creates:
+		input.add("create sacings 12345678 2");
+		input.add("create chacking 11111111 1");
+		input.add("create certificate of deposit 23456789 3 5000");
+
+		// valid deposits:
+		input.add("deposit 12345678 2000");
+		input.add("deposit 11111111 500");
+
+		// invalid deposits:
+		input.add("deposit 12345678 3000");
+		input.add("deposit 11111111 1500");
+		input.add("deposit 12345678 -300");
+		input.add("deposit 11111111 -900");
+		input.add("deposit 23456789 500");
+		input.add("deposit 23456789 -500");
+
+		// invalid withdraws:
+		input.add("withdraw 12345678 2000");
+		input.add("withdraw 11111111 1000");
+		input.add("withdraw 12345678 -400");
+		input.add("withdraw 11111111 -400");
+		input.add("withdraw 11111111 5000"); // 12 months not passed yet
+		input.add("withdraw 34567890 5000"); // 12 months not passed yet
+		input.add("withdraw 11111111 3000");
+		input.add("withdraw 34567890 -5000");
+
+		// valid withdraws:
+		input.add("withdraw 12345678 800");
+		input.add("withdraw 11111111 300");
+
+		// invalid withdraws again(due to no pass time):
+		input.add("withdraw 12345678 800");
+
+		// invalid pass times:
+		input.add("Pass 73");
+		input.add("Pass 0");
+		input.add("Pass -3");
+		input.add("Pass 3000");
+		input.add("Pass abc");
+
+		// valid pass times:
+		input.add("Pass 1");
+		input.add("Pass 60");
+		input.add("Pass 30");
+		input.add("Pass 9");
+
+		// valid withdraws for cd only:
+		input.add("withdraw 23456789 135745.45");
+		input.add("withdraw 34567890 20000");
+
+		// valid transfers:
+		input.add("transfer 12345678 11111111 1000");
+		input.add("transfer 11111111 12345678 400");
+
+		// invalid transfers:
+		input.add("transfer 12345678 11111111 -400");
+		input.add("transfer 11111111 12345678 -300");
+		input.add("transfer 23456789 11111111 8000");
+		input.add("transfer 34567890 23456789 8000");
+
+		input.add("pass 1");
+
+		List<String> actual = masterControl.start(input);
+
+		assertEquals("Savings 12345678 818.80 2.00", actual.get(0));
+		assertEquals("deposit 12345678 2000", actual.get(1));
+		assertEquals("withdraw 12345678 800", actual.get(2));
+		assertEquals("transfer 12345678 11111111 1000", actual.get(3));
+		assertEquals("transfer 11111111 12345678 400", actual.get(4));
+		assertEquals("Checking 11111111 818.05 1.00", actual.get(5));
+		assertEquals("deposit 11111111 500", actual.get(6));
+		assertEquals("withdraw 11111111 300", actual.get(7));
+		assertEquals("transfer 12345678 11111111 1000", actual.get(8));
+		assertEquals("transfer 11111111 12345678 400", actual.get(9));
+		assertEquals("create sacings 12345678 2", actual.get(10));
+		assertEquals("create chacking 11111111 1", actual.get(11));
+		assertEquals("create certificate of deposit 23456789 3 5000", actual.get(12));
+		assertEquals("deposit 12345678 3000", actual.get(13));
+		assertEquals("deposit 11111111 1500", actual.get(14));
+		assertEquals("deposit 12345678 -300", actual.get(15));
+		assertEquals("deposit 11111111 -900", actual.get(16));
+		assertEquals("deposit 23456789 500", actual.get(17));
+		assertEquals("deposit 23456789 -500", actual.get(18));
+		assertEquals("withdraw 12345678 2000", actual.get(19));
+		assertEquals("withdraw 11111111 1000", actual.get(20));
+		assertEquals("withdraw 12345678 -400", actual.get(21));
+		assertEquals("withdraw 11111111 -400", actual.get(22));
+		assertEquals("withdraw 11111111 5000", actual.get(23));
+		assertEquals("withdraw 34567890 5000", actual.get(24));
+		assertEquals("withdraw 11111111 3000", actual.get(25));
+		assertEquals("withdraw 34567890 -5000", actual.get(26));
+		assertEquals("withdraw 12345678 800", actual.get(27));
+		assertEquals("Pass 73", actual.get(28));
+		assertEquals("Pass 0", actual.get(29));
+		assertEquals("Pass -3", actual.get(30));
+		assertEquals("Pass 3000", actual.get(31));
+		assertEquals("Pass abc", actual.get(32));
+		assertEquals("transfer 12345678 11111111 -400", actual.get(33));
+		assertEquals("transfer 11111111 12345678 -300", actual.get(34));
+		assertEquals("transfer 23456789 11111111 8000", actual.get(35));
+		assertEquals("transfer 34567890 23456789 8000", actual.get(36));
+
+	}
+
 
 }
