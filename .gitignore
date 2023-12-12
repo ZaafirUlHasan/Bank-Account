@@ -1,0 +1,7 @@
+*.class
+gradlew
+gradlew.bat
+build
+.idea
+.DS_Store
+.gradle
