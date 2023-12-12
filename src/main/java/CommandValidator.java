@@ -53,7 +53,6 @@ public class CommandValidator {
 		boolean digitsOnly = id.matches("\\d{8}");
 
 		return (validLength && digitsOnly);
-
 	}
 
 }
